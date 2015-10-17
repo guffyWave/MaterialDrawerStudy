@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        System.out.println("Dummy");
+        System.out.println("Dummy ABCD");
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.mDrawerLayout);
 
