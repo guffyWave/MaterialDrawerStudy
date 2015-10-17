@@ -2,6 +2,7 @@ package com.appxperts.materialdrawerstudy;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("Dummy ABCD");
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.mDrawerLayout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,6 +46,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+        /////------------>> FAB and Snack Bar with Coordinator support
+        Snackbar.make(findViewById(R.id.coordinator), "I'm a Snackbar", Snackbar.LENGTH_LONG).setAction("Action", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Snackbar Action", Toast.LENGTH_LONG).show();
+                System.out.println("Hello World ");
+            }
+        }).show();
+
+
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(findViewById(R.id.coordinator), "I'm a Snackbar", Snackbar.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override
@@ -63,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
